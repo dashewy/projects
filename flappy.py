@@ -112,7 +112,7 @@ class Bird(pygame.sprite.Sprite):
             self.image = pygame.transform.rotate(self.images[self.index], -90)
             
 class Pipe(pygame.sprite.Sprite):
-    def __init__(self, x, y, position):
+    def __init__(self, x, y, position, gap):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('/Users/alex/MyProject/flappy_stuff/flappy_pipe.png')
         self.rect = self.image.get_rect()
@@ -121,9 +121,9 @@ class Pipe(pygame.sprite.Sprite):
             # image, x, y flipping rotation
             self.image = pygame.transform.flip(self.image, False, True)
             self.rect = self.image.get_rect()
-            self.rect.bottomleft = [x, y - pipe_gap // 2]
+            self.rect.bottomleft = [x, y - gap // 2]
         if position == - 1:
-            self.rect.topleft = [x, y + pipe_gap // 2]
+            self.rect.topleft = [x, y + gap // 2]
         
     def update(self):
         self.rect.x -= scroll_speed
@@ -219,12 +219,24 @@ while run:
         time_now = pygame.time.get_ticks()
         if time_now - last_pipe > pipe_freq:
             pipe_height = random.randint(-100, 100)
-            btm_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, -1)
-            top_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, 1)
-            pipe_group.add(btm_pipe)
-            pipe_group.add(top_pipe)   
-            last_pipe = time_now 
-        
+            if score > 5:
+                btm_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, -1, pipe_gap + 25)
+                top_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, 1, pipe_gap + 25)
+                pipe_group.add(btm_pipe)
+                pipe_group.add(top_pipe)   
+                last_pipe = time_now 
+            elif score > 10:
+                btm_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, -1, pipe_gap)
+                top_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, 1, pipe_gap)
+                pipe_group.add(btm_pipe)
+                pipe_group.add(top_pipe)   
+                last_pipe = time_now 
+            else:
+                btm_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, -1, pipe_gap + 50)
+                top_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, 1, pipe_gap + 50)
+                pipe_group.add(btm_pipe)
+                pipe_group.add(top_pipe)   
+                last_pipe = time_now 
         # decrement ground scroll by the speed to adjust position on screen
         ground_scroll -= scroll_speed
         # resetting ground lines (set to the amount of over hang)
