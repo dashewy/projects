@@ -177,7 +177,7 @@ while run:
     # looping for every event in pygame
     
     # check the score check if there are pipes
-    if len(pipe_group) > 0:
+    if pipe_group:
         if bird_group.sprites()[0].rect.left > pipe_group.sprites()[0].rect.left \
             and bird_group.sprites()[0].rect.right < pipe_group.sprites()[0].rect.right\
                 and not pass_pipe:
