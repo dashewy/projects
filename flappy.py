@@ -219,7 +219,7 @@ while run:
         time_now = pygame.time.get_ticks()
         if time_now - last_pipe > pipe_freq:
             pipe_height = random.randint(-100, 100)
-            if score > 5:
+            if 5 <= score <= 10:
                 btm_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, -1, pipe_gap + 25)
                 top_pipe = Pipe(screen_width, (screen_height // 2) + pipe_height, 1, pipe_gap + 25)
                 pipe_group.add(btm_pipe)
