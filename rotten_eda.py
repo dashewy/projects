@@ -29,7 +29,7 @@ for fruit in os.listdir(data_path):
                 labels.append(f'{fruit}_{status}')
                 
 # look at random sample of images
-
+# test
 # print(classes)
 
 plt.figure(figsize=(12,8))
