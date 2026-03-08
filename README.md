@@ -4,5 +4,5 @@ accpets jpg images and will tell you if fruit is rotten <br>
 
 ## Flappy sphere
 requires pygame <br>
-take all photos and change path to where you put images <br>
+make a directory on you computer called flappy_stff and download all files for the game to it <br>
 
