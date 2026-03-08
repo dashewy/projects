@@ -6,6 +6,12 @@ import os
 # intialize instance of pygame
 pygame.init()
 
+bg_path = os.path.expanduser('~/flappy_stuff/flappy_background.png')
+ground_path = os.path.expanduser('~/flappy_stuff/flappy_ground.png')
+restart_path = os.path.expanduser('~/flappy_stuff/flappy_restart.png')
+bird_path = [os.path.expanduser(f'~/flappy_stuff/flappy_sphere{num}.png') for num in range(1, 4)]
+pipe_path = os.path.expanduser('~/flappy_stuff/flappy_pipe.png')
+
 # adding for framerate
 clock = pygame.time.Clock()
 fps = 60
@@ -29,9 +35,9 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('flapping sphere')
 
 # load images
-bg = pygame.image.load('/Users/alex/MyProject/flappy_stuff/flappy_background.png')
-ground = pygame.image.load('/Users/alex/MyProject/flappy_stuff/flappy_ground.png')
-restart_butt = pygame.image.load('/Users/alex/MyProject/flappy_stuff/flappy_restart.png')
+bg = pygame.image.load(bg_path)
+ground = pygame.image.load(ground_path)
+restart_butt = pygame.image.load(restart_path)
 
 ground_scroll = 0
 # set pixel_speed
@@ -59,14 +65,12 @@ class Bird(pygame.sprite.Sprite):
     def __init__(self, x, y):
         # inherant from pygames sprite class
         pygame.sprite.Sprite.__init__(self)
-        # self.org_image = pygame.image.load('/Users/alex/MyProject/flappy_stuff/flappy_sphere.png')
-        # self.image = self.org_image
-        # use below to animate sprite
+
         self.images = []
         self.index = 0
         self.counter = 0
-        for num in range(1, 4):
-            img = pygame.image.load(f'/Users/alex/MyProject/flappy_stuff/flappy_sphere{num}.png')
+        for bird in bird_path:
+            img = pygame.image.load(bird)
             self.images.append(img)
         self.image = self.images[self.index]
         self.rect = self.image.get_rect()
@@ -115,7 +119,7 @@ class Bird(pygame.sprite.Sprite):
 class Pipe(pygame.sprite.Sprite):
     def __init__(self, x, y, position, gap):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('/Users/alex/MyProject/flappy_stuff/flappy_pipe.png')
+        self.image = pygame.image.load(pipe_path)
         self.rect = self.image.get_rect()
         # postion 1: TOP -1: BOTTOM
         if position == 1:
