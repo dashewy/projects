@@ -8,7 +8,7 @@ import importlib.util
 
 packages_to_install = ['pygame', 'requests']
 user_path = os.path.expanduser("~")
-folder_name = 'flappy_stuff_test'
+folder_name = 'flappy_stuff'
 file_pattern = re.compile('flappy.*\.p')
 owner = 'dashewy'
 repo = 'projects'
