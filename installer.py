@@ -71,21 +71,6 @@ else:
     print(f"Failed to fetch repository contents. Status code: {response.status_code}")
 
 def alias_machine():
-    if os.name == 'nt':  # Windows
-        alias_command = f'setx PATH "%PATH%;{new_path}"'
-    else:  # Unix/Linux/Mac
-        alias_command = f'echo "export PATH=$PATH:{new_path}" >> ~/.bashrc'
-    
-    try:
-        subprocess.check_call(alias_command, shell=True)
-        print("Alias has been set successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred while setting the alias: {e}")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        
-        
-def alias_machine():
     
     alias = f'alias flappy="python3 {new_path}/flappy.py"' 
     zshrc_path = os.path.expanduser('~/.zshrc')
