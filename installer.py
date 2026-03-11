@@ -8,7 +8,7 @@ import importlib.util
 
 packages_to_install = ['pygame', 'requests']
 user_path = os.path.expanduser("~")
-folder_name = 'flappy_stuff'
+folder_name = 'flappy_stuff_test'
 file_pattern = re.compile('flappy.*\.p')
 owner = 'dashewy'
 repo = 'projects'
@@ -46,29 +46,30 @@ new_path = folder_maker(folder_name)
 importlib.invalidate_caches()
 
 try:
-    import requests
+    import requests   
+    response = requests.get(repo_url)
+
+    if response.status_code == 200:
+
+        contents = response.json()
+        
+        for item in contents:
+            if item['type'] == 'file' and file_pattern.match(item['name']):
+                file_name = item['name']
+                download_url = item['download_url']
+
+                local_path = os.path.join(new_path, file_name)
+                
+                file_data = requests.get(download_url).content
+                with open(local_path, 'wb') as f:
+                    f.write(file_data)
+                
+    else:
+        print(f"Failed to fetch repository contents. Status code: {response.status_code}")
+        
 except ImportError:
     print("Failed to import 'requests' after installation.")
 
-response = requests.get(repo_url)
-
-if response.status_code == 200:
-
-    contents = response.json()
-    
-    for item in contents:
-        if item['type'] == 'file' and file_pattern.match(item['name']):
-            file_name = item['name']
-            download_url = item['download_url']
-
-            local_path = os.path.join(new_path, file_name)
-            
-            file_data = requests.get(download_url).content
-            with open(local_path, 'wb') as f:
-                f.write(file_data)
-               
-else:
-    print(f"Failed to fetch repository contents. Status code: {response.status_code}")
 
 def alias_machine():
     
