@@ -10,5 +10,5 @@ accpets jpg images and will tell you if fruit is rotten <br>
 <b>instructions</b><br>
 - download or copy installer.py and run it. <br>
 - all files and script will be put on your home directory under flappy_stff<br>
-- after install you need to do is type __flappy__ in your terminal to run
+- after install you need to do is type <b>flappy</b> in your terminal to run
 
