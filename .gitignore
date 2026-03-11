@@ -1,0 +1,4 @@
+# Ignore all screenshot files
+Screenshot*.png
+flappy/
+.DS_Store
