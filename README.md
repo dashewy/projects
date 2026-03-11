@@ -5,7 +5,7 @@ accpets jpg images and will tell you if fruit is rotten <br>
 ## Flappy sphere
 ### __inspired by flappy bird__<br>
 <br>
-<em>This is a fan-made, open-source remake of Flappy Bird for educational purposes only. I am not affiliated with the original creator (Dong Nguyen) or The Flappy Bird Foundation Group."</em>
+<em>This is a fan-made, open-source remake of Flappy Bird for educational purposes only. I am not affiliated with the original creator (Dong Nguyen) or The Flappy Bird Foundation Group.</em>
 <br>
 <b>instructions</b><br>
 - download or copy installer.py and run it. <br>
