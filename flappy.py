@@ -245,7 +245,7 @@ while run:
         # decrement ground scroll by the speed to adjust position on screen
         ground_scroll -= scroll_speed
         # resetting ground lines (set to the amount of over hang)
-        if abs(ground_scroll) > 35:
+        if abs(ground_scroll) > 36:
             ground_scroll = 0
         # move pipes
         pipe_group.update()  
